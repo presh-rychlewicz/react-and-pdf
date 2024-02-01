@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
-import { FC, ReactNode } from "react";
-import { getPx } from "../../../../../utils";
-import { config } from "../../../../../styles/config";
-import Icon from "../../../../../assets/outs/Icon";
+import { StyleSheet, Text, View } from "@react-pdf/renderer"
+import { FC, ReactNode } from "react"
+import { getPx } from "../../../../../utils"
+import { config } from "../../../../../styles/config"
+import { Icon } from "../../../../../components"
 
 type Props = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 const ExercisePageTemplate: FC<Props> = ({ children }) => (
   <View style={styles.container}>
@@ -22,7 +22,7 @@ const ExercisePageTemplate: FC<Props> = ({ children }) => (
 
     <View style={styles.exerciseArea}>{children}</View>
   </View>
-);
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     // border: "1px solid lightgray",
     height: "100%",
   },
-});
+})
 
-export default ExercisePageTemplate;
+export default ExercisePageTemplate

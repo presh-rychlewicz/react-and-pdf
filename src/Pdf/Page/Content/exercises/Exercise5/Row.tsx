@@ -1,42 +1,50 @@
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
-import { FC } from "react";
-import Icon from "../../../../../assets/outs/Icon";
-import { fontSizes } from "../../../../../styles/fontSizes";
-import { Exercise5Data } from "../../../../../types";
-import { Checkboxes } from "./Checkboxes";
+import { StyleSheet, Text, View } from "@react-pdf/renderer"
+import { FC } from "react"
+import { Icon } from "../../../../../components"
+import { fontSizes } from "../../../../../styles/fontSizes"
+import { Exercise5Data } from "../../../../../types"
+import { getPx } from "../../../../../utils"
 
-type Props = Exercise5Data["elements"][number] & {};
+type Props = Exercise5Data["elements"][number]
 
-export const Row: FC<Props> = ({ name, variant1, variant2, variant3 }) => {
-  const elements = [name, variant1, variant2, variant3];
-  const parts = [elements.slice(0, 2), elements.slice(2, 4)];
+export const Row: FC<Props> = ({ out, name, variant1, variant2, variant3 }) => {
+  const parts = [
+    [name, variant1],
+    [variant2, variant3],
+  ]
 
   return (
     <View style={styles.container}>
-      <View style={styles.alfa}>
-        {parts[0].map((element) => (
-          <View key={element} style={styles.elementWrapper}>
-            <Text style={styles.variants}>{element}</Text>
+      <Icon out={out} size={70} />
 
-            <Checkboxes />
-          </View>
-        ))}
-      </View>
+      {parts.map((elements, index) => (
+        <View key={index} style={styles.sideWrapper}>
+          {elements.map((element) => (
+            <View key={element} style={styles.elementWrapper}>
+              <Text style={styles.variants}>{element}</Text>
 
-      <Icon size={70} />
-
-      <View style={styles.alfa}>
-        {parts[1].map((element) => (
-          <View key={element} style={styles.elementWrapper}>
-            <Text style={styles.variants}>{element}</Text>
-
-            <Checkboxes />
-          </View>
-        ))}
-      </View>
+              <View style={styles.checkboxesWrapper}>
+                {[...new Array(COUNT)].map((_, index) => (
+                  <View
+                    key={index}
+                    style={{
+                      ...styles.checkbox,
+                      width: getPx(CHECKBOX_SIZE),
+                      height: getPx(CHECKBOX_SIZE),
+                    }}
+                  />
+                ))}
+              </View>
+            </View>
+          ))}
+        </View>
+      ))}
     </View>
-  );
-};
+  )
+}
+
+const COUNT = 3
+const CHECKBOX_SIZE = 25
 
 const styles = StyleSheet.create({
   container: {
@@ -48,14 +56,7 @@ const styles = StyleSheet.create({
     gap: "10px",
   },
 
-  leftSide: {
-    width: "100%",
-    height: "100%",
-    flexDirection: "row",
-    gap: "5px",
-  },
-
-  alfa: {
+  sideWrapper: {
     width: "100%",
     height: "100%",
     flexDirection: "column",
@@ -69,11 +70,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  name: {
-    fontSize: fontSizes.large,
-  },
-
   variants: {
     fontSize: fontSizes.small,
   },
-});
+
+  checkboxesWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    gap: "5px",
+  },
+
+  checkbox: {
+    border: "1px solid black",
+  },
+})

@@ -1,30 +1,30 @@
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
-import ExercisePageTemplate from "../_shared/ExercisePageTemplate";
-import { Exercise6Data } from "../../../../../types";
-import { FC } from "react";
-import { fontSizes } from "../../../../../styles/fontSizes";
-import Icon from "../../../../../assets/outs/Icon";
-import { getPx } from "../../../../../utils";
+import { StyleSheet, Text, View } from "@react-pdf/renderer"
+import ExercisePageTemplate from "../_shared/ExercisePageTemplate"
+import { Exercise6Data } from "../../../../../types"
+import { FC } from "react"
+import { fontSizes } from "../../../../../styles/fontSizes"
+import { Icon } from "../../../../../components"
+import { getPx } from "../../../../../utils"
 
 type Props = {
-  data: Exercise6Data;
-};
+  data: Exercise6Data
+}
 
-export const Exercise6: FC<Props> = ({ data: { elements } }) => (
+const Exercise6: FC<Props> = ({ data: { elements } }) => (
   <ExercisePageTemplate>
     <View style={styles.container}>
-      {elements.map((element, index) => (
+      {elements.map(({ name, out }, index) => (
         <View
-          key={element.name}
+          key={name}
           style={{
             ...styles.row,
             borderTop: index ? "1px solid black" : undefined,
           }}
         >
           <View style={styles.cell}>
-            <Icon size={60} />
+            <Icon out={out} size={60} />
 
-            <Text style={styles.text}>{element.name}</Text>
+            <Text style={styles.text}>{name}</Text>
           </View>
 
           {[...new Array(5)].map((_, index) => (
@@ -40,9 +40,9 @@ export const Exercise6: FC<Props> = ({ data: { elements } }) => (
       ))}
     </View>
   </ExercisePageTemplate>
-);
+)
 
-const CELL_SIZE = 90;
+const CELL_SIZE = 90
 
 const styles = StyleSheet.create({
   container: {
@@ -70,4 +70,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: fontSizes.medium,
   },
-});
+})
+
+export default Exercise6

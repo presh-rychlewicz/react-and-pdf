@@ -1,17 +1,16 @@
-import { StyleSheet, View } from "@react-pdf/renderer"
+import { StyleSheet, Text, View } from "@react-pdf/renderer"
 import { FC } from "react"
-import { Icon } from "../../../../../components"
-import { Exercise4Data } from "../../../../../types"
 import ExercisePageTemplate from "../_shared/ExercisePageTemplate"
+import { ExerciseStubData } from "../../../../../types"
 
 type Props = {
-  data: Exercise4Data
+  data: ExerciseStubData
 }
 
-const Exercise4: FC<Props> = ({ data }) => (
+const StubExercise: FC<Props> = ({ data }) => (
   <ExercisePageTemplate>
     <View style={styles.container}>
-      <Icon size={500} />
+      <Text style={styles.text}>?</Text>
     </View>
   </ExercisePageTemplate>
 )
@@ -19,11 +18,14 @@ const Exercise4: FC<Props> = ({ data }) => (
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    width: "100%",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
+  text: {
+    fontSize: "100px",
+  },
 })
 
-export default Exercise4
+export default StubExercise

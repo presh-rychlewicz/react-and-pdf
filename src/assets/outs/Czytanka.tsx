@@ -2,12 +2,12 @@ import { Text } from "@react-pdf/renderer"
 import { FC } from "react"
 import SvgWrapper from "./_shared/SvgWrapper"
 
-const Czajka: FC = () => (
+const Czytanka: FC = () => (
   <SvgWrapper>
     <Text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-      CZAJKA
+      CZYTANKA
     </Text>
   </SvgWrapper>
 )
 
-export default Czajka
+export default Czytanka

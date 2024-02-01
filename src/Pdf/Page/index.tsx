@@ -1,14 +1,14 @@
-import { Font, Page as PageNative, StyleSheet } from "@react-pdf/renderer";
-import { FC } from "react";
-import { config } from "../../styles/config";
-import { Page as PageType } from "../../types";
-import { getPx } from "../../utils";
-import Content from "./Content";
-import { PageFooter, PageHeading } from "./pageElements";
+import { Page as PageNative, StyleSheet } from "@react-pdf/renderer"
+import { FC } from "react"
+import { config } from "../../styles/config"
+import { Page as PageType } from "../../types"
+import { getPx } from "../../utils"
+import Content from "./Content"
+import { PageFooter, PageHeading } from "./pageElements"
 
 type Props = {
-  page: PageType;
-};
+  page: PageType
+}
 
 const Page: FC<Props> = ({ page }) => {
   const shouldShowPageFooter = ![
@@ -16,7 +16,7 @@ const Page: FC<Props> = ({ page }) => {
     "COVER_WHITE",
     "META",
     "INTRODUCTION",
-  ].includes(page.type);
+  ].includes(page.type)
 
   return (
     <PageNative size="A4" style={styles.page}>
@@ -26,13 +26,8 @@ const Page: FC<Props> = ({ page }) => {
 
       {shouldShowPageFooter && <PageFooter />}
     </PageNative>
-  );
-};
-
-Font.register({
-  family: "Roboto",
-  src: "http://fonts.gstatic.com/s/roboto/v16/zN7GBFwfMP4uA6AR0HCoLQ.ttf",
-});
+  )
+}
 
 const styles = StyleSheet.create({
   page: {
@@ -43,6 +38,6 @@ const styles = StyleSheet.create({
     gap: getPx(config.MARGIN_BETWEEN_PAGE_PARTS),
     position: "relative",
   },
-});
+})
 
-export default Page;
+export default Page

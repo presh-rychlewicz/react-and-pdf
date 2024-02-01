@@ -1,58 +1,70 @@
-import { Text } from "@react-pdf/renderer";
-import { FC } from "react";
-import { Page } from "../../../types";
+import { Text } from "@react-pdf/renderer"
+import { FC } from "react"
+import { Page } from "../../../types"
 import {
   Exercise1,
   Exercise2,
   Exercise3,
   Exercise4,
   Exercise5,
-} from "./exercises";
-import { Chapter, Cover, CoverWhite, Introduction, Meta } from "./otherPages";
-import { Exercise6 } from "./exercises/Exercise6";
+  Exercise6,
+  Exercise7,
+  Exercise8,
+  StubExercise,
+} from "./exercises"
+import { Chapter, Cover, CoverWhite, Introduction, Meta } from "./otherPages"
 
 type Props = {
-  page: Page;
-};
+  page: Page
+}
 
 const Content: FC<Props> = ({ page }) => {
   switch (page.type) {
     case "COVER":
-      return <Cover data={page.data} />;
+      return <Cover data={page.data} />
 
     case "COVER_WHITE":
-      return <CoverWhite data={page.data} />;
+      return <CoverWhite data={page.data} />
 
     case "META":
-      return <Meta data={page.data} />;
+      return <Meta data={page.data} />
 
     case "INTRODUCTION":
-      return <Introduction data={page.data} />;
+      return <Introduction data={page.data} />
 
     case "CHAPTER":
-      return <Chapter data={page.data} />;
+      return <Chapter data={page.data} />
 
     case "EXERCISE1":
-      return <Exercise1 data={page.data} />;
+      return <Exercise1 data={page.data} />
 
     case "EXERCISE2":
-      return <Exercise2 data={page.data} />;
+      return <Exercise2 data={page.data} />
 
     case "EXERCISE3":
-      return <Exercise3 data={page.data} />;
+      return <Exercise3 data={page.data} />
 
     case "EXERCISE4":
-      return <Exercise4 data={page.data} />;
+      return <Exercise4 data={page.data} />
 
     case "EXERCISE5":
-      return <Exercise5 data={page.data} />;
+      return <Exercise5 data={page.data} />
 
     case "EXERCISE6":
-      return <Exercise6 data={page.data} />;
+      return <Exercise6 data={page.data} />
+
+    case "EXERCISE7":
+      return <Exercise7 data={page.data} />
+
+    case "EXERCISE8":
+      return <Exercise8 data={page.data} />
+
+    case "STUB_EXERCISE":
+      return <StubExercise data={page.data} />
 
     default:
-      return <Text>TODO</Text>;
+      return <Text>TODO</Text>
   }
-};
+}
 
-export default Content;
+export default Content

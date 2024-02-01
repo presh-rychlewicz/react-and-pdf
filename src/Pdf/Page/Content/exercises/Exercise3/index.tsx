@@ -1,13 +1,12 @@
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
-import { FC } from "react";
-import outs from "../../../../../assets/outs";
-import Icon from "../../../../../assets/outs/Icon";
-import { Exercise3Data } from "../../../../../types";
-import ExercisePageTemplate from "../_shared/ExercisePageTemplate";
+import { StyleSheet, Text, View } from "@react-pdf/renderer"
+import { FC } from "react"
+import { Icon } from "../../../../../components"
+import { Exercise3Data } from "../../../../../types"
+import ExercisePageTemplate from "../_shared/ExercisePageTemplate"
 
 type Props = {
-  data: Exercise3Data;
-};
+  data: Exercise3Data
+}
 
 const Exercise3: FC<Props> = ({ data: { elements } }) => (
   <ExercisePageTemplate>
@@ -17,19 +16,17 @@ const Exercise3: FC<Props> = ({ data: { elements } }) => (
           <Text>{name}</Text>
 
           <View style={styles.attemptsWrapper}>
-            {[...new Array(COUNT)].map((_, index) => {
-              const out = outs.czajka;
-
-              return <Icon key={index} size={ATTEMPT_SIZE} />;
-            })}
+            {[...new Array(COUNT)].map((_, index) => (
+              <Icon key={index} out={out} size={ATTEMPT_SIZE} />
+            ))}
           </View>
         </View>
       ))}
     </View>
   </ExercisePageTemplate>
-);
+)
 
-const ATTEMPT_SIZE = 75;
+const ATTEMPT_SIZE = 75
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -52,8 +49,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: "15px",
   },
-});
+})
 
-const COUNT = 5;
+const COUNT = 5
 
-export default Exercise3;
+export default Exercise3
