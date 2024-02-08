@@ -4,9 +4,9 @@ import { Page } from "../../../types"
 import {
   Exercise1,
   Exercise2,
-  Exercise3,
+  Exercise3Old,
   Exercise4,
-  Exercise5,
+  Exercise3,
   Exercise6,
   Exercise7,
   Exercise8,
@@ -41,14 +41,14 @@ const Content: FC<Props> = ({ page }) => {
     case "EXERCISE2":
       return <Exercise2 data={page.data} />
 
-    case "EXERCISE3":
-      return <Exercise3 data={page.data} />
+    case "EXERCISE3OLD":
+      return <Exercise3Old data={page.data} />
 
     case "EXERCISE4":
       return <Exercise4 data={page.data} />
 
-    case "EXERCISE5":
-      return <Exercise5 data={page.data} />
+    case "EXERCISE3":
+      return <Exercise3 data={page.data} />
 
     case "EXERCISE6":
       return <Exercise6 data={page.data} />

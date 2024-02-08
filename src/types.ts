@@ -32,16 +32,16 @@ export type Page = {
       data: Exercise2Data
     }
   | {
-      type: "EXERCISE3"
-      data: Exercise3Data
+      type: "EXERCISE3OLD"
+      data: Exercise3OldData
     }
   | {
       type: "EXERCISE4"
       data: Exercise4Data
     }
   | {
-      type: "EXERCISE5"
-      data: Exercise5Data
+      type: "EXERCISE3"
+      data: Exercise3Data
     }
   | {
       type: "EXERCISE6"
@@ -77,13 +77,13 @@ export type ChapterData = {
   title: string
 }
 
-export type Exercise3Data = {
+export type Exercise3OldData = {
   elements: Array<Element>
 }
 
 export type Exercise4Data = undefined
 
-export type Exercise5Data = {
+export type Exercise3Data = {
   elements: Array<
     Element & {
       variant1: string

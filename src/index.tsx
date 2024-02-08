@@ -5,8 +5,8 @@ import Pdf, { PdfProps } from "./Pdf"
 import {
   Exercise1Data,
   Exercise2Data,
+  Exercise3OldData,
   Exercise3Data,
-  Exercise5Data,
   Exercise6Data,
   Exercise7Data,
   Exercise8Data,
@@ -17,8 +17,8 @@ type Chapter = {
   title: string
   exercise1Elements: Exercise1Data["elements"]
   exercise2Elements: Exercise2Data["elements"]
-  exercise3Elements: Exercise3Data["elements"]
-  exercise5Elements: Exercise5Data["elements"]
+  exercise3Elements: Exercise3OldData["elements"]
+  exercise5Elements: Exercise3Data["elements"]
   exercise6Elements: Exercise6Data["elements"]
   exercise7Elements: Exercise7Data["elements"]
   exercise8Elements: Exercise8Data["elements"]
@@ -177,7 +177,7 @@ const pdfData: PdfProps = {
         },
 
         {
-          type: "EXERCISE3",
+          type: "EXERCISE3OLD",
           pageTitle: "?Głoska w sylabach",
           data: {
             elements: chapter.exercise3Elements,
@@ -185,7 +185,7 @@ const pdfData: PdfProps = {
         },
 
         {
-          type: "EXERCISE5",
+          type: "EXERCISE3",
           pageTitle: "Głoska w nagłosie",
           data: {
             elements: chapter.exercise5Elements,
