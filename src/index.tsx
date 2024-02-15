@@ -3,136 +3,79 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import Pdf, { PdfProps } from "./Pdf"
 import {
-  Exercise1Data,
-  Exercise2Data,
-  Exercise3OldData,
-  Exercise3Data,
-  Exercise6Data,
-  Exercise7Data,
-  Exercise8Data,
+  ExerciseWithNameData,
+  ExerciseWithOutData,
+  ExerciseWithVariantData,
   Page,
 } from "./types"
 
 type Chapter = {
   title: string
-  exercise1Elements: Exercise1Data["elements"]
-  exercise2Elements: Exercise2Data["elements"]
-  exercise3Elements: Exercise3OldData["elements"]
-  exercise5Elements: Exercise3Data["elements"]
-  exercise6Elements: Exercise6Data["elements"]
-  exercise7Elements: Exercise7Data["elements"]
-  exercise8Elements: Exercise8Data["elements"]
+  exerciseWithOutElements: ExerciseWithOutData["elements"]
+  exerciseWithNameElements: ExerciseWithNameData["elements"]
+  exerciseWithVariantsElements: ExerciseWithVariantData["elements"]
 }
 
 const chapters: Array<Chapter> = [
   {
     title: "CZ",
-    exercise1Elements: [
-      { name: "UCZ", out: "unknown" },
-      { name: "ECZ", out: "unknown" },
-      { name: "YCZ", out: "unknown" },
-      { name: "OCZ", out: "unknown" },
-      { name: "ACZ", out: "unknown" },
+    exerciseWithNameElements: [
+      { name: "CZA" },
+      { name: "CZO" },
+      { name: "CZE" },
+      { name: "CZY" },
+      { name: "CZU" },
     ],
-    exercise2Elements: [
-      { name: "MIECZ", out: "unknown" },
-      { name: "MLECZ", out: "unknown" },
-      { name: "KLUCZ", out: "unknown" },
-      { name: "BIEGACZ", out: "unknown" },
-      { name: "WARKOCZ", out: "unknown" },
-      { name: "KLACZ", out: "unknown" },
-    ],
-    exercise3Elements: [
+    exerciseWithOutElements: [
       { name: "CZA", out: "czajka" },
       { name: "CZO", out: "czolg" },
       { name: "CZE", out: "czepek" },
       { name: "CZY", out: "czytanka" },
       { name: "CZU", out: "unknown" },
     ],
-    exercise5Elements: [
+    exerciseWithVariantsElements: [
       {
-        name: "czekolada",
-        variant1: "lubie czekolade",
-        variant2: "dobra czekolada",
-        variant3: "Julek je czekolade",
+        name: "CZEKOLADA",
         out: "czekolada",
+        variant1: "LUBIĘ CZEKOLADĘ",
+        variant2: "DOBRA CZEKOLADA",
+        variant3: "JULEK JE CZEKOLADĘ.",
       },
       {
-        name: "czepek",
-        variant1: "ladny czepek",
-        variant2: "pod czepkiem",
-        variant3: "mama kupila czepek",
-        out: "czepek",
-      },
-      {
-        name: "czolg",
-        variant1: "na czolgu",
-        variant2: "obok czolgu",
-        variant3: "tomek bawi sie czolgiem",
+        name: "CZOŁG",
         out: "czolg",
+        variant1: "NA CZOŁGU",
+        variant2: "OBOK CZOŁGU",
+        variant3: "TOMEK BAWI SIĘ CZOŁGIEM.",
       },
       {
-        name: "czajka",
-        variant1: "ladna czajka",
-        variant2: "obok czajki",
-        variant3: "na dachu siedzi czajka",
+        name: "CZEPEK",
+        out: "czepek",
+        variant1: "ŁADNY CZEPEK",
+        variant2: "POD CZEPKIEM ",
+        variant3: "MAMA KUPIŁA CZEPEK.",
+      },
+      {
+        name: "CZAJKA",
         out: "czajka",
+        variant1: "ŁADNA CZAJKA",
+        variant2: "OBOK CZAJKI",
+        variant3: "NA DACHU SIEDZI CZAJKA.",
       },
       {
-        name: "czajnik",
-        variant1: "bialy czajnik",
-        variant2: "obok czajnika",
-        variant3: "tata kupil nowy czajnik",
+        name: "CZAJNIK",
         out: "czajnik",
+        variant1: "BIAŁY CZAJNIK",
+        variant2: "OBOK CZAJNIKA",
+        variant3: "TATA KUPIŁ NOWY CZAJNIK.",
       },
       {
-        name: "czytanka",
-        variant1: "nowa czytanka",
-        variant2: "nad czytanka",
-        variant3: "Julia ma czytanke",
+        name: "CZYTANKA",
         out: "czytanka",
+        variant1: "NOWA CZYTANKA",
+        variant2: "NAD CZYTANKĄ",
+        variant3: "JULIA MA CZYTANKĘ.",
       },
-    ],
-    exercise6Elements: [
-      {
-        name: "kaczka",
-        out: "kaczka",
-      },
-      {
-        name: "kolczyki",
-        out: "kolczyki",
-      },
-      {
-        name: "buleczka",
-        out: "buleczka",
-      },
-      {
-        name: "paczka",
-        out: "paczka",
-      },
-      {
-        name: "doniczka",
-        out: "doniczka",
-      },
-      {
-        name: "wnuczka",
-        out: "wnuczka",
-      },
-    ],
-    exercise7Elements: [
-      { name: "ACZA", out: "unknown" },
-      { name: "OCZO", out: "unknown" },
-      { name: "ECZE", out: "unknown" },
-      { name: "YCZY", out: "unknown" },
-      { name: "UCZU", out: "unknown" },
-    ],
-    exercise8Elements: [
-      { name: "TĘCZA", out: "tecza" },
-      { name: "OCZY", out: "oczy" },
-      { name: "UCZEŃ", out: "uczen" },
-      { name: "KONICZYNA", out: "koniczyna" },
-      { name: "PAJĘCZYNA", out: "pajeczyna" },
-      { name: "MACZUGA", out: "maczuga" },
     ],
   },
 ]
@@ -163,72 +106,33 @@ const pdfData: PdfProps = {
 
     ...chapters
       .map((chapter): Page[] => [
+        // {
+        //   type: "CHAPTER",
+        //   data: {
+        //     title: `Chapter ${chapter.title}`,
+        //   },
+        // },
+
+        // {
+        //   type: "EXERCISE3OLD",
+        //   pageTitle: "Page title",
+        //   data: {
+        //     elements: chapter.exercise3Elements,
+        //   },
+        // },
+
         {
-          type: "CHAPTER",
+          type: "TABLE_EXERCISE",
+          pageTitle: "Page title",
           data: {
-            title: `Chapter ${chapter.title}`,
+            elements: chapter.exerciseWithVariantsElements,
           },
         },
-
         {
-          type: "EXERCISE4",
-          pageTitle: "Głoska w izolacji",
-          data: undefined,
-        },
-
-        {
-          type: "EXERCISE3OLD",
-          pageTitle: "?Głoska w sylabach",
+          type: "WHEEL_EXERCISE",
+          pageTitle: "Page title",
           data: {
-            elements: chapter.exercise3Elements,
-          },
-        },
-
-        {
-          type: "EXERCISE3",
-          pageTitle: "Głoska w nagłosie",
-          data: {
-            elements: chapter.exercise5Elements,
-          },
-        },
-
-        {
-          type: "EXERCISE7",
-          pageTitle: "Głoska w środku sylaby",
-          data: {
-            elements: chapter.exercise7Elements,
-          },
-        },
-
-        {
-          type: "EXERCISE8",
-          pageTitle: "Głoska w śródgłosie",
-          data: {
-            elements: chapter.exercise8Elements,
-          },
-        },
-
-        {
-          type: "EXERCISE6",
-          pageTitle: "Głoska w śródgłosie (trudne slowa)",
-          data: {
-            elements: chapter.exercise6Elements,
-          },
-        },
-
-        {
-          type: "EXERCISE1",
-          pageTitle: "Powtarzanie sylab na końcu",
-          data: {
-            elements: chapter.exercise1Elements,
-          },
-        },
-
-        {
-          type: "EXERCISE2",
-          pageTitle: "Wygłos",
-          data: {
-            elements: chapter.exercise2Elements,
+            elements: chapter.exerciseWithOutElements,
           },
         },
       ])
