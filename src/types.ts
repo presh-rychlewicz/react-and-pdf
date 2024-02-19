@@ -1,4 +1,6 @@
-import { TableExerciseProps } from "./Pdf/Page/Content/exercises/TableExercise"
+import { GameExerciseProps } from "./Pdf/Page/Content/exercises/GameExercise"
+import { GameExercise2Props } from "./Pdf/Page/Content/exercises/GameExercise2"
+import { GameExercise3Props } from "./Pdf/Page/Content/exercises/GameExercise3"
 import { WheelExerciseProps } from "./Pdf/Page/Content/exercises/WheelExercise"
 import { Out } from "./assets/outs"
 
@@ -26,7 +28,9 @@ export type Page = {
       data: ChapterData
     }
   | WheelExerciseProps
-  | TableExerciseProps
+  | GameExerciseProps
+  | GameExercise2Props
+  | GameExercise3Props
 )
 
 export type CoverData = undefined

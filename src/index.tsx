@@ -122,19 +122,33 @@ const pdfData: PdfProps = {
         // },
 
         {
-          type: "TABLE_EXERCISE",
+          type: "GAME_EXERCISE_3",
           pageTitle: "Page title",
           data: {
             elements: chapter.exerciseWithVariantsElements,
           },
         },
         {
-          type: "WHEEL_EXERCISE",
+          type: "GAME_EXERCISE_2",
           pageTitle: "Page title",
           data: {
-            elements: chapter.exerciseWithOutElements,
+            elements: chapter.exerciseWithVariantsElements,
           },
         },
+        {
+          type: "GAME_EXERCISE",
+          pageTitle: "Page title",
+          data: {
+            elements: chapter.exerciseWithVariantsElements,
+          },
+        },
+        // {
+        //   type: "WHEEL_EXERCISE",
+        //   pageTitle: "Page title",
+        //   data: {
+        //     elements: chapter.exerciseWithOutElements,
+        //   },
+        // },
       ])
       .flat(),
   ],

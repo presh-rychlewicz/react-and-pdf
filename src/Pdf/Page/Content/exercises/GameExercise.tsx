@@ -7,58 +7,48 @@ import { fontSizes } from "../../../../styles/fontSizes"
 import { getPx } from "../../../../utils"
 import capitalize from "lodash.capitalize"
 
-export type TableExerciseProps = {
-  type: "TABLE_EXERCISE"
+export type GameExerciseProps = {
+  type: "GAME_EXERCISE"
   data: ExerciseWithVariantData
 }
 
-const TableExercise: FC<TableExerciseProps> = ({ data: { elements } }) => {
+const GameExercise: FC<GameExerciseProps> = ({ data: { elements } }) => {
   return (
     <ExercisePageTemplate>
       <View style={styles.container}>
         {elements.map(({ name, out, variant1, variant2, variant3 }) => {
-          const alfa = [name, variant1, variant2, variant3]
+          const variants = [name, variant1, variant2, variant3]
 
           return (
             <View key={name} style={styles.row}>
               <Icon out={out} size={96} />
 
               <View style={styles.rowContent}>
-                {alfa.map((a, index) => {
-                  return (
-                    <View style={styles.rowContentElement}>
-                      <Text
-                        style={{
-                          ...styles.rowContentElementText,
-                          fontSize: fontSizes[index ? "small" : "medium"],
-                        }}
-                      >
-                        {index ? capitalize(a) : a}
-                      </Text>
+                {variants.map((a, index) => (
+                  <View key={index} style={styles.rowContentElement}>
+                    <Text
+                      style={{
+                        ...styles.rowContentElementText,
+                        fontSize: fontSizes[index ? "small" : "medium"],
+                      }}
+                    >
+                      {index ? capitalize(a) : a}
+                    </Text>
 
-                      <View style={styles.rowContentElementCheckboxWrapper}>
+                    <View style={styles.rowContentElementCheckboxWrapper}>
+                      <CheckboxStartOrEndElement content="START" />
+
+                      {[...new Array(CHECKBOX_COUNT)].map((_, index) => (
                         <View
-                          style={styles.rowContentElementCheckboxStartOrEnd}
-                        >
-                          <Text>START</Text>
-                        </View>
+                          key={index}
+                          style={styles.rowContentElementCheckbox}
+                        />
+                      ))}
 
-                        {[...new Array(CHECKBOX_COUNT)].map((_, index) => (
-                          <View
-                            key={index}
-                            style={styles.rowContentElementCheckbox}
-                          />
-                        ))}
-
-                        <View
-                          style={styles.rowContentElementCheckboxStartOrEnd}
-                        >
-                          <Text>KONIEC</Text>
-                        </View>
-                      </View>
+                      <CheckboxStartOrEndElement content="KONIEC" />
                     </View>
-                  )
-                })}
+                  </View>
+                ))}
               </View>
             </View>
           )
@@ -67,6 +57,17 @@ const TableExercise: FC<TableExerciseProps> = ({ data: { elements } }) => {
     </ExercisePageTemplate>
   )
 }
+
+type CheckboxStartOrEndElementProps = {
+  content: string
+}
+const CheckboxStartOrEndElement: FC<CheckboxStartOrEndElementProps> = ({
+  content,
+}) => (
+  <View style={styles.rowContentElementCheckboxStartOrEnd}>
+    <Text>{content}</Text>
+  </View>
+)
 
 const CHECKBOX_COUNT = 3
 
@@ -128,4 +129,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default TableExercise
+export default GameExercise
