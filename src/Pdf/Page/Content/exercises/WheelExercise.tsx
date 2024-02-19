@@ -1,4 +1,4 @@
-import { Circle, G, StyleSheet, Svg, View } from "@react-pdf/renderer"
+import { Circle, G, Line, StyleSheet, Svg, View } from "@react-pdf/renderer"
 import * as hierarchy from "d3-hierarchy"
 import { FC } from "react"
 import { ExerciseWithOutData } from "../../../../types"
@@ -226,15 +226,6 @@ const WheelExercise: FC<WheelExerciseProps> = ({ data: { elements } }) => {
     }
   })
 
-  // const elements6 = [
-  //   ...elements,
-  //   {
-  //     name: "xxx",
-  //     out: "unknown",
-  //   },
-  // ]
-  // const rows = [elements6.slice(0, 3), elements6.slice(3)]
-
   return (
     <ExercisePageTemplate>
       <View style={styles.container}>
@@ -267,29 +258,25 @@ const WheelExercise: FC<WheelExerciseProps> = ({ data: { elements } }) => {
               index
             ) => (
               <G key={index}>
-                {/* <Line strokeWidth={0.1} stroke={color} {...lineToCenter} />
+                <Line strokeWidth={0.1} stroke={color} {...lineToCenter} />
 
                 <Line
                   strokeWidth={0.1}
                   stroke={color}
                   {...lineToPreviousPoint}
-                /> */}
+                />
 
-                {descendants.slice(0).map((data) => {
-                  return (
-                    <Circle
-                      key={index}
-                      r={data.r}
-                      cx={data.x}
-                      cy={data.y}
-                      stroke="blue"
-                      strokeWidth={0.1}
-                      transform={`translate(${h.cx - 14.5}px, ${
-                        h.cy - 14.5
-                      }px)`}
-                    />
-                  )
-                })}
+                {descendants.slice(0).map((data) => (
+                  <Circle
+                    key={index}
+                    r={data.r}
+                    cx={data.x}
+                    cy={data.y}
+                    stroke="blue"
+                    strokeWidth={0.1}
+                    transform={`translate(${h.cx - 14.5}px, ${h.cy - 14.5}px)`}
+                  />
+                ))}
               </G>
             )
           )}
@@ -309,15 +296,11 @@ const styles = StyleSheet.create({
     border: "1px solid red",
   },
 
-  // SVG
   svg: {
     width: "100%",
     height: "100%",
     border: "1px solid red",
   },
-  //
-
-  // NEW
 })
 
 const posibleColors = ["red", "blue", "green"]
